@@ -3,15 +3,7 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
   font-weight: bold;
-}
-
-h1 {
   text-align: center;
-}
-
-a {
-  color: black;
-  text-decoration: none;
 }
 
 .container {
@@ -19,11 +11,15 @@ a {
   width: 80%;
 }
 
+.nomeCategoria {
+  margin: 15px;
+  font-size: 2em;
+}
+
 .card {
   width: 200px;
-  text-align: center;
   vertical-align: top;
-  border: 2px solid #ccc;
+  border: 2px solid #D2D7D3;
   border-radius: 20px;
 }
 
@@ -36,15 +32,13 @@ a {
   display: inline-block;
 }
 
-.cardTotal h2,
-.card h2 {
-  border-bottom: 2px solid #ccc;
+.card--titulo {
   padding: 5px;
   font-style: italic;
+  border-bottom: 2px solid #D2D7D3;
 }
 
-.cardTotal p,
-.card p {
+.card--qtd {
   font-family: 'Indie Flower', cursive;
   line-height: 130px;
   font-size: 100px;
@@ -52,23 +46,33 @@ a {
   border-bottom-right-radius: 20px;
 }
 
-.SUSSA { /* 0-4: Verde */
+.card--subCategoria {
+  color: black;
+  text-decoration: none;
+}
+
+.SUSSA {
   background-color: #049372;
 }
 
-.TRANQUILO { /* 5-9: Amarelo */
+.TRANQUILO {
   background-color: #F9BF3B;
 }
 
-.SE_LIGA { /* 10-19: laranja */
+.SE_LIGA {
   background-color: #D35400;
 }
 
-.DEU_RUIM { /* > 20: Vermelho */
+.DEU_RUIM {
   background-color: #F22613;
 }
 
-button {
+.linkBotao {
+  color: white;
+  text-decoration: none;
+}
+
+.botao {
   cursor: pointer;
   border: none;
   border-radius: 20px;
@@ -80,8 +84,10 @@ button {
   color: white;
 }
 
-.nomeCategoria {
-  text-align: center;
-  margin: 15px;
-  font-size: 40px;
+.botao:focus {
+  outline: none;
+}
+
+.botao[disabled] {
+  opacity: 0;
 }
