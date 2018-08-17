@@ -1,0 +1,87 @@
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+h1 {
+  text-align: center;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.container {
+  margin: 20px auto;
+  width: 80%;
+}
+
+.card {
+  width: 200px;
+  text-align: center;
+  vertical-align: top;
+  border: 2px solid #ccc;
+  border-radius: 20px;
+}
+
+.cardTotal {
+  margin: 20px auto;
+}
+
+.cardCategoria {
+  margin: 20px;
+  display: inline-block;
+}
+
+.cardTotal h2,
+.card h2 {
+  border-bottom: 2px solid #ccc;
+  padding: 5px;
+  font-style: italic;
+}
+
+.cardTotal p,
+.card p {
+  font-family: 'Indie Flower', cursive;
+  line-height: 130px;
+  font-size: 100px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.SUSSA { /* 0-4: Verde */
+  background-color: #049372;
+}
+
+.TRANQUILO { /* 5-9: Amarelo */
+  background-color: #F9BF3B;
+}
+
+.SE_LIGA { /* 10-19: laranja */
+  background-color: #D35400;
+}
+
+.DEU_RUIM { /* > 20: Vermelho */
+  background-color: #F22613;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 20px;
+  background-color: blue;
+  margin: 20px;
+  padding: 20px;
+  font-size: 20px;
+  display: block;
+  color: white;
+}
+
+.nomeCategoria {
+  text-align: center;
+  margin: 15px;
+  font-size: 40px;
+}
