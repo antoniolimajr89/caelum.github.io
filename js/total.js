@@ -13,5 +13,5 @@ function qtdTotalDuvidas(infoTotalDuvidas) {
   var total = document.querySelector("#total")
 
   total.textContent = infoTotalDuvidas.qtd
-  total.classList.add(infoTotalDuvidas.status)
+  total.style.backgroundColor = coresStatus[infoTotalDuvidas.status]
 }

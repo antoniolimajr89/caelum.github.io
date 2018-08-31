@@ -31,11 +31,12 @@ function montaCardSubCategoria(subCategorias) {
 	} else {
 		subCategoria = subCategorias.nome
 	}
+	var corStatus = coresStatus[subCategorias.status]
 
 	const cartaoModelo = `
 		<div class="card cardCategoria">
 			<h2 class="card--titulo" style="color:${nomeCor}">${subCategoria}</h2>
-			<p class="card--qtd ${subCategorias.status}">${subCategorias.qtd}</p>
+			<p class="card--qtd" style="background-color:${corStatus}">${subCategorias.qtd}</p>
 		</div>
 	`
 
