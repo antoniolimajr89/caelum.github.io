@@ -6,13 +6,14 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie+Flower|Roboto">
         <link rel="stylesheet" href="css/reset.css">
         <link rel="stylesheet" href="css/forum.css">
-        <script src="node_modules/chart.js/dist/Chart.bundle.js"></script>
-        <script src="js/coresStatus.js"></script>
-        <script src="js/grafico.js"></script>
+        <script type="text/javascript" src="node_modules/chart.js/dist/Chart.bundle.js"></script>
+        <script type="text/javascript" src="js/coresStatus.js"></script>
+        <script type="text/javascript" src="js/grafico.js"></script>
     </head>
     <body class="container">
         <h1>DASHBOARD Fórum Alura Sem Respostas - Histórico Total</h1>
         <br><br>
+
         <section>
             <h2>Período</h2>
             <label for="inicio">Início</label>
@@ -25,6 +26,14 @@
             <canvas id="myChart" width="400" height="150"></canvas>
         </section>
         <script src="js/graficoTotal.js"></script>
+
+        <section>
+            <a class="linkBotao" href="index.html">
+                <button type="button" class="botao" name="voltar">
+                Voltar
+                </button>
+            </a>
+        </section>
     </body>
 </html>
     
