@@ -1,39 +1,69 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Fórum Sem Respostas - SubCategorias</title>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie+Flower|Roboto">
-        <link rel="stylesheet" href="css/reset.css">
-        <link rel="stylesheet" href="css/forum.css">
-        <script type="text/javascript" src="node_modules/chart.js/dist/Chart.bundle.js"></script>
-        <script type="text/javascript" src="js/coresStatus.js"></script>
-        <script type="text/javascript" src="js/grafico.js"></script>
-    </head>
-    <body class="container">
-        <h1>DASHBOARD Fórum Alura Sem Respostas - Histórico Total</h1>
-        <br><br>
+  <head>
+    <meta charset="utf-8">
+    <title>Fórum Sem Respostas - Histórico Total</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie+Flower|Roboto">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/forum.css">
+  </head>
 
-        <section>
-            <h2>Período</h2>
-            <label for="inicio">Início</label>
-            <input id="inicio" type="date">
-            <label for="fim">Fim</label>
-            <input id="fim" type="date">
-        </section>
-        <br><br>
-        <section>
-            <canvas id="myChart" width="400" height="150"></canvas>
-        </section>
-        <script src="js/graficoTotal.js"></script>
+  <body class="container">
+    <h1>DASHBOARD Fórum Alura Sem Respostas - Histórico Total</h1>
 
-        <section>
-            <a class="linkBotao" href="index.html">
-                <button type="button" class="botao" name="voltar">
-                Voltar
-                </button>
-            </a>
-        </section>
-    </body>
+    <form class="filtro">
+      <h2>Período</h2>
+      <fieldset>
+        <label for="inicio">Data de Início:</label>
+        <input type="text" id="inicio">
+
+        <label for="fim">Data de Fim:</label>
+        <input type="text" id="fim">
+      </fieldset>
+
+      <fieldset class="checkboxCategorias">
+        <input type="checkbox" id="programacao" name="" value="" checked>
+        <label for="programacao">Programação</label>
+
+        <input type="checkbox" id="mobile" name="" value="" checked>
+        <label for="mobile">Mobile</label>
+
+        <input type="checkbox" id="infra" name="" value="" checked>
+        <label for="infra">Infraestrutura</label>
+
+        <input type="checkbox" id="front" name="" value="" checked>
+        <label for="front">Front-end</label>
+
+        <input type="checkbox" id="design" name="" value="" checked>
+        <label for="design">Design & UX</label>
+
+        <input type="checkbox" id="business" name="" value="">
+        <label for="business">Business</label>
+
+        <input type="checkbox" id="offTopic" name="" value="">
+        <label for="offTopic">Off Topic</label>
+      </fieldset>
+
+      <button type="submit" class="botao" name="ok">OK</button>
+    </form>
+
+    <br><br>
+
+    <section>
+      <canvas id="myChart" width="400" height="150"></canvas>
+    </section>
+
+    <section>
+      <a class="linkBotao" href="index.html">
+        <button type="button" class="botao" name="voltar">
+          Voltar
+        </button>
+      </a>
+    </section>
+
+    <script type="text/javascript" src="node_modules/chart.js/dist/Chart.bundle.js"></script>
+    <script type="text/javascript" src="js/coresStatus.js"></script>
+    <script type="text/javascript" src="js/grafico.js"></script>
+    <script type="text/javascript" src="js/graficoTotal.js"></script>
+  </body>
 </html>
-    

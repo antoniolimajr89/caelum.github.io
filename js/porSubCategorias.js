@@ -2,7 +2,7 @@ var urlParams = new URLSearchParams(window.location.search)
 var nomeCategoria = urlParams.get("categoria")
 var nomeCor = urlParams.get("cor")
 
-var URL = "https://dash-forum.herokuapp.com/duvidas/"+nomeCategoria
+var URL = "http://a51cbfe4.ngrok.io/duvida/"+nomeCategoria
 console.log(URL)
 fetch(URL)
 	.then(response => {
@@ -31,12 +31,15 @@ function montaCardSubCategoria(subCategorias) {
 	} else {
 		subCategoria = subCategorias.nome
 	}
+
 	var corStatus = coresStatus[subCategorias.status]
 
 	const cartaoModelo = `
 		<div class="card cardCategoria">
-			<h2 class="card--titulo" style="color:${nomeCor}">${subCategoria}</h2>
-			<p class="card--qtd" style="background-color:${corStatus}">${subCategorias.qtd}</p>
+			<a class="card--subCategoria" href="https://cursos.alura.com.br/forum/subcategoria-${subCategorias.codigo}/sem-resposta/">
+				<h2 class="card--titulo" style="color:${nomeCor}">${subCategoria}</h2>
+				<p class="card--qtd" style="background-color:${corStatus}">${subCategorias.qtd}</p>
+			</a>
 		</div>
 	`
 

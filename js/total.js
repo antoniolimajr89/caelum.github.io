@@ -1,4 +1,4 @@
-fetch("https://dash-forum.herokuapp.com/duvidas/qtd")
+fetch("http://a51cbfe4.ngrok.io/duvida/qtd")
 	.then(response => {
 		if (response.ok) {
 			return response.json()
