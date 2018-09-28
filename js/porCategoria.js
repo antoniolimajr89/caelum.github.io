@@ -1,4 +1,4 @@
-fetch("http://a51cbfe4.ngrok.io/duvida/")
+fetch(globals.url+"duvida/")
 	.then(response => {
 		if (response.ok) {
 			return response.json()

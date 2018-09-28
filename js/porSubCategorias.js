@@ -2,7 +2,7 @@ var urlParams = new URLSearchParams(window.location.search)
 var nomeCategoria = urlParams.get("categoria")
 var nomeCor = urlParams.get("cor")
 
-var URL = "http://a51cbfe4.ngrok.io/duvida/"+nomeCategoria
+var URL = globals.url+"duvida/"+nomeCategoria
 console.log(URL)
 fetch(URL)
 	.then(response => {

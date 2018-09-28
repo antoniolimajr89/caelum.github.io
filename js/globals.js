@@ -1,0 +1,1 @@
+const globals = {url: "https://df6ec451.ngrok.io/"}
