@@ -9,43 +9,47 @@
   </head>
 
   <body class="container">
-    <h1>DASHBOARD Fórum Alura Sem Respostas - Histórico Total</h1>
+    <h1>DASHBOARD Fórum Alura Sem Respostas - Histórico às 20hrs</h1>
 
-    <!-- <form class="filtro">
-      <h2>Período</h2>
+    <form class="filtro formFiltro">
+      <!-- <h2>Período</h2>
       <fieldset>
         <label for="inicio">Data de Início:</label>
         <input type="text" id="inicio">
 
         <label for="fim">Data de Fim:</label>
         <input type="text" id="fim">
-      </fieldset>
-
+      </fieldset> -->
+<br><br>
+      <h2>Categorias</h2>
       <fieldset class="checkboxCategorias">
-        <input type="checkbox" id="programacao" name="" value="" checked>
+        <input type="checkbox" id="total" name="Total" value="" checked>
+        <label for="programacao">Total</label>
+
+        <input type="checkbox" id="programacao" name="Programação" value="" checked>
         <label for="programacao">Programação</label>
 
-        <input type="checkbox" id="mobile" name="" value="" checked>
+        <input type="checkbox" id="mobile" name="Mobile" value="" checked>
         <label for="mobile">Mobile</label>
 
-        <input type="checkbox" id="infra" name="" value="" checked>
+        <input type="checkbox" id="infra" name="Infraestrutura" value="" checked>
         <label for="infra">Infraestrutura</label>
 
-        <input type="checkbox" id="front" name="" value="" checked>
+        <input type="checkbox" id="front" name="Front-end" value="" checked>
         <label for="front">Front-end</label>
 
-        <input type="checkbox" id="design" name="" value="" checked>
+        <input type="checkbox" id="design" name="Design & UX" value="" checked>
         <label for="design">Design & UX</label>
 
-        <input type="checkbox" id="business" name="" value="">
+        <input type="checkbox" id="business" name="Business" value="">
         <label for="business">Business</label>
 
         <input type="checkbox" id="offTopic" name="" value="">
         <label for="offTopic">Off Topic</label>
       </fieldset>
 
-      <button type="submit" class="botao" name="ok">OK</button>
-    </form> -->
+      <button type="submit" class="botao" id="btn_ok">OK</button>
+    </form>
 
     <br><br>
 
@@ -66,5 +70,48 @@
     <script type="text/javascript" src="js/coresStatus.js"></script>
     <script type="text/javascript" src="js/grafico.js"></script>
     <script type="text/javascript" src="js/graficoTotal.js"></script>
+    <script type="text/javascript" src="js/graficoCategorias.js"></script>
+
+    <script>
+      const $formFiltro = document.querySelector(".formFiltro")
+      //gera gráfico inicial só com total e pega datas do histórico
+      atualizaGrafico()
+
+      $formFiltro.addEventListener("submit", function(evento) {
+        evento.preventDefault()
+        atualizaGrafico()
+      })
+
+      function atualizaGrafico() {
+        // pega dados do gráfico do total
+        var promiseDoTotal
+        var inputTotal = document.querySelector("#total")
+        if (inputTotal.checked === true) {
+          promiseDoTotal = pegaDadosGraficoTotal()
+        }
+        
+        // pega dados do gráfico das categorias
+        console.log($formFiltro.elements)
+        var categoriasEscolhidas = Array.from($formFiltro.elements)
+        .filter(elemento =>  elemento.nodeName === "INPUT" && elemento.id !== "total")
+        .filter(input => input.checked === true)
+        .map(inputEscolhido => inputEscolhido.name)
+        console.log(categoriasEscolhidas)
+
+        var promiseCategorias = pegaDadosGraficoCategorias(categoriasEscolhidas)
+
+        Promise.all([promiseDoTotal, promiseCategorias])
+        .then((respostasDasPromises) => {
+          var infosHistoricoTotal = respostasDasPromises[0]
+          var listaHistoricosCategorias = respostasDasPromises[1]
+          var listaDatas = infosHistoricoTotal.datas
+          
+          var listaDadosProGrafico = listaHistoricosCategorias
+          listaDadosProGrafico.unshift(infosHistoricoTotal.dados)
+          console.log(listaDadosProGrafico)
+          montaGrafico(listaDatas, listaDadosProGrafico)
+        })
+      }
+    </script>
   </body>
 </html>
