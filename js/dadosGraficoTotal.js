@@ -8,6 +8,7 @@ function pegaDadosGraficoTotal() {
 			}
 		})
 		.then(duvidasPorDia => {
+			console.log("Qlq coisa")
 			console.log(duvidasPorDia)
 
 			var listaDatas = duvidasPorDia.map(duvida => {

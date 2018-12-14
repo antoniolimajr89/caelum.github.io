@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Fórum Sem Respostas - Histórico Total</title>
+    <title>Fórum Sem Respostas - Histórico</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie+Flower|Roboto">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/forum.css">
@@ -11,7 +11,7 @@
   <body class="container">
     <h1>DASHBOARD Fórum Alura Sem Respostas - Histórico às 20hrs</h1>
 
-    <form class="filtro formFiltro">
+    <form class="filtro formFiltro" method="post" action="#">
       <!-- <h2>Período</h2>
       <fieldset>
         <label for="inicio">Data de Início:</label>
@@ -23,28 +23,28 @@
 <br><br>
       <h2>Categorias</h2>
       <fieldset class="checkboxCategorias">
-        <input type="checkbox" id="total" name="Total" value="" checked>
-        <label for="programacao">Total</label>
+        <input type="checkbox" id="total" name="Total" checked>
+        <label for="total">Total</label>
 
-        <input type="checkbox" id="programacao" name="Programação" value="" checked>
+        <input type="checkbox" id="programacao" name="Programação" checked>
         <label for="programacao">Programação</label>
 
-        <input type="checkbox" id="mobile" name="Mobile" value="" checked>
+        <input type="checkbox" id="mobile" name="Mobile" checked>
         <label for="mobile">Mobile</label>
 
-        <input type="checkbox" id="infra" name="Infraestrutura" value="" checked>
+        <input type="checkbox" id="infra" name="Infraestrutura" checked>
         <label for="infra">Infraestrutura</label>
 
-        <input type="checkbox" id="front" name="Front-end" value="" checked>
+        <input type="checkbox" id="front" name="Front-end" checked>
         <label for="front">Front-end</label>
 
-        <input type="checkbox" id="design" name="Design & UX" value="" checked>
+        <input type="checkbox" id="design" name="Design & UX" checked>
         <label for="design">Design & UX</label>
 
-        <input type="checkbox" id="business" name="Business" value="">
+        <input type="checkbox" id="business" name="Business">
         <label for="business">Business</label>
 
-        <input type="checkbox" id="offTopic" name="" value="">
+        <input type="checkbox" id="offTopic" name="">
         <label for="offTopic">Off Topic</label>
       </fieldset>
 
@@ -68,50 +68,9 @@
     <script type="text/javascript" src="node_modules/chart.js/dist/Chart.bundle.js"></script>
     <script type="text/javascript" src="js/globals.js"></script>
     <script type="text/javascript" src="js/coresStatus.js"></script>
+    <script type="text/javascript" src="js/dadosGraficoTotal.js"></script>
+    <script type="text/javascript" src="js/dadosGraficoCategorias.js"></script>
     <script type="text/javascript" src="js/grafico.js"></script>
-    <script type="text/javascript" src="js/graficoTotal.js"></script>
-    <script type="text/javascript" src="js/graficoCategorias.js"></script>
 
-    <script>
-      const $formFiltro = document.querySelector(".formFiltro")
-      //gera gráfico inicial só com total e pega datas do histórico
-      atualizaGrafico()
-
-      $formFiltro.addEventListener("submit", function(evento) {
-        evento.preventDefault()
-        atualizaGrafico()
-      })
-
-      function atualizaGrafico() {
-        // pega dados do gráfico do total
-        var promiseDoTotal
-        var inputTotal = document.querySelector("#total")
-        if (inputTotal.checked === true) {
-          promiseDoTotal = pegaDadosGraficoTotal()
-        }
-        
-        // pega dados do gráfico das categorias
-        console.log($formFiltro.elements)
-        var categoriasEscolhidas = Array.from($formFiltro.elements)
-        .filter(elemento =>  elemento.nodeName === "INPUT" && elemento.id !== "total")
-        .filter(input => input.checked === true)
-        .map(inputEscolhido => inputEscolhido.name)
-        console.log(categoriasEscolhidas)
-
-        var promiseCategorias = pegaDadosGraficoCategorias(categoriasEscolhidas)
-
-        Promise.all([promiseDoTotal, promiseCategorias])
-        .then((respostasDasPromises) => {
-          var infosHistoricoTotal = respostasDasPromises[0]
-          var listaHistoricosCategorias = respostasDasPromises[1]
-          var listaDatas = infosHistoricoTotal.datas
-          
-          var listaDadosProGrafico = listaHistoricosCategorias
-          listaDadosProGrafico.unshift(infosHistoricoTotal.dados)
-          console.log(listaDadosProGrafico)
-          montaGrafico(listaDatas, listaDadosProGrafico)
-        })
-      }
-    </script>
   </body>
 </html>

@@ -36,7 +36,7 @@ function montaCardSubCategoria(subCategorias) {
 
 	const cartaoModelo = `
 		<div class="card cardCategoria">
-			<a class="card--subCategoria" href="https://cursos.alura.com.br/forum/subcategoria-${subCategorias.codigo}/sem-resposta/">
+			<a class="card--subCategoria" target="_blank" href="https://cursos.alura.com.br/forum/subcategoria-${subCategorias.codigo}/sem-resposta/">
 				<h2 class="card--titulo" style="color:${nomeCor}">${subCategoria}</h2>
 				<p class="card--qtd" style="background-color:${corStatus}">${subCategorias.qtd}</p>
 			</a>
