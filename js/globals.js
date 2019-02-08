@@ -1,1 +1,1 @@
-const globals = {url: "http://777fce4d.ngrok.io/"}
+const globals = {url: "http://192.168.1.7:2020/"}
