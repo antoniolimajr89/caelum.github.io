@@ -36,7 +36,7 @@ function montaCardSubCategoria(subCategorias) {
 
 	const cartaoModelo = `
 		<div class="card cardCategoria">
-			<a class="card--subCategoria" target="_blank" href="https://cursos.alura.com.br/forum/subcategoria-${subCategorias.codigo}/sem-resposta/">
+			<a class="card--subCategoria" target="_blank" href=${urlForumSubCategoria(subCategorias)}>
 				<h2 class="card--titulo" style="color:${nomeCor}">${subCategoria}</h2>
 				<p class="card--qtd" style="background-color:${corStatus}">${subCategorias.qtd}</p>
 			</a>
@@ -48,4 +48,14 @@ function montaCardSubCategoria(subCategorias) {
 	const $cartao = tplCartao.querySelector(".card")
 
 	document.querySelector(".cardPorSubCategoria").insertAdjacentElement("afterbegin", $cartao)
+}
+
+
+function urlForumSubCategoria (subCategorias) {
+	if(subCategorias == null || subCategorias == undefined ||
+		subCategorias.codigo == null || subCategorias.codigo == undefined || subCategorias.codigo == "") {
+		return `"https://cursos.alura.com.br/forum/todos/1"`
+	} else {
+		return `"https://cursos.alura.com.br/forum/subcategoria-${subCategorias.codigo}/sem-resposta/"`
+	}
 }
